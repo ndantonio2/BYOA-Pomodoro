@@ -17,11 +17,18 @@
         <div class="timer">
             <span id="minutes">25</span>:<span id="seconds">00</span>
         </div>
-        <div class="controls">
+        <div class="timer-controls">
             <button id="startPause">Start</button>
             <button id="reset">Reset</button>
+            <button id="add5min">+5 min</button>
         </div>
     </div>
     <script src="script.js"></script>
+    <script>
+        document.getElementById('add5min').addEventListener('click', function() {
+            timeLeft += 5 * 60; // Add 5 minutes (300 seconds)
+            updateDisplay();
+        });
+    </script>
 </body>
 </html> 

@@ -29,20 +29,20 @@ body {
     letter-spacing: -1px;  /* Tighter spacing for numbers */
 }
 
-.controls button {
+.timer-controls button {
     font-size: 1rem;
     margin: 0 0.5rem;
-    padding: 0.75rem 1.5rem;  /* More padding for better touch targets */
+    padding: 0.75rem 1.5rem;
     cursor: pointer;
     color: white;
     border: none;
-    border-radius: 12px;  /* Rounder corners */
-    font-weight: 600;  /* Semibold text */
-    transition: all 0.2s ease;  /* Smooth transitions */
+    border-radius: 12px;
+    font-weight: 600;
+    transition: all 0.2s ease;
 }
 
-.controls button:hover {
-    transform: translateY(-2px);  /* Subtle lift effect */
+.timer-controls button:hover {
+    transform: translateY(-2px);
     opacity: 0.95;
 }
 
@@ -50,16 +50,16 @@ body {
     background-color: #00b894;  /* Fresh mint green */
 }
 
-#startPause.pause {
-    background-color: gray;  /* Warm yellow */
-}
-
 #reset {
     background-color: #ff7675;  /* Soft red */
 }
 
-#reset:hover {
-    background-color: #e66767;
+#add5min {
+    background-color: #74b9ff;  /* Light blue color */
+}
+
+#add5min:hover {
+    background-color: #6aabe8;
 }
 
 /* New toggle switch styles */
