@@ -51,7 +51,7 @@ body {
 }
 
 #startPause.pause {
-    background-color: #fdcb6e;  /* Warm yellow */
+    background-color: gray;  /* Warm yellow */
 }
 
 #reset {
