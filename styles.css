@@ -11,13 +11,13 @@ body {
 .container {
     text-align: center;
     background-color: white;
-    padding: 2.5rem;  /* Slightly more padding */
-    padding-top: 1rem;  /* Reduce top padding to account for new layout */
-    border-radius: 16px;  /* More modern, rounded corners */
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);  /* Softer, more modern shadow */
-    max-width: 400px;  /* Constrain width for better layout */
-    width: 90%;  /* Responsive width */
-    position: relative;  /* For absolute positioning of toggle */
+    padding: 2rem;  /* Reduced from 2.5rem */
+    padding-top: 1rem;
+    border-radius: 16px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+    max-width: 400px;
+    width: 95%;  /* Increased from 90% */
+    position: relative;
 }
 
 .timer {
