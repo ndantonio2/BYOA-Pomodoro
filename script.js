@@ -3,6 +3,11 @@ const secondsDisplay = document.getElementById('seconds');
 const startPauseButton = document.getElementById('startPause');
 const resetButton = document.getElementById('reset');
 const modeToggleButton = document.getElementById('modeToggle');
+const focusPrompt = document.getElementById('focusPrompt');
+const focusInput = document.getElementById('focusInput');
+const focusSubmit = document.getElementById('focusSubmit');
+const focusDisplay = document.getElementById('focusDisplay');
+const focusText = document.getElementById('focusText');
 
 let timeLeft = 25 * 60; // 25 minutes in seconds
 let isRunning = false;
@@ -25,8 +30,27 @@ function updateDisplay() {
     }
 }
 
+function showFocusPrompt() {
+    focusPrompt.style.display = 'flex';
+    focusInput.focus();
+}
+
+function hideFocusPrompt() {
+    focusPrompt.style.display = 'none';
+}
+
+function setFocus(focus) {
+    focusText.textContent = focus;
+    focusDisplay.classList.remove('hidden');
+    hideFocusPrompt();
+}
+
 startPauseButton.addEventListener('click', () => {
     if (!isRunning) {
+        if (isWorkMode && !focusText.textContent) {
+            showFocusPrompt();
+            return;
+        }
         isRunning = true;
         startPauseButton.textContent = 'Pause';
         startPauseButton.classList.add('pause');
@@ -58,6 +82,9 @@ resetButton.addEventListener('click', () => {
     if (timerInterval) {
         clearInterval(timerInterval);
     }
+    focusText.textContent = '';
+    focusDisplay.classList.add('hidden');
+    focusInput.value = '';
 });
 
 modeToggleButton.addEventListener('click', () => {
@@ -74,7 +101,10 @@ modeToggleButton.addEventListener('click', () => {
     }
     
     updateDisplay();
-    document.querySelector('.mode-label').textContent = isWorkMode ? 'Work Mode' : 'Rest Mode';
+    document.querySelector('.mode-label').textContent = isWorkMode ? 'Work' : 'Rest';
+    focusText.textContent = '';
+    focusDisplay.classList.add('hidden');
+    focusInput.value = '';
 });
 
 // Initialize display
@@ -92,6 +122,29 @@ window.addEventListener('blur', () => {
 window.addEventListener('focus', () => {
     if (!isRunning) {
         document.title = 'Pomodoro Timer';
+    }
+});
+
+// Add new event listener
+focusSubmit.addEventListener('click', () => {
+    const focus = focusInput.value.trim();
+    if (focus) {
+        setFocus(focus);
+        // Start the timer
+        isRunning = true;
+        startPauseButton.textContent = 'Pause';
+        startPauseButton.classList.add('pause');
+        
+        timerInterval = setInterval(() => {
+            timeLeft--;
+            updateDisplay();
+            if (timeLeft <= 0) {
+                clearInterval(timerInterval);
+                isRunning = false;
+                startPauseButton.textContent = 'Start';
+                startPauseButton.classList.remove('pause');
+            }
+        }, 1000);
     }
 });
 

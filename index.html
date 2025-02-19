@@ -12,8 +12,19 @@
 <body>
     <div class="container">
         <button id="modeToggle" aria-label="Toggle work/rest mode"></button>
-        <span class="mode-label">Work Mode</span>
+        <span class="mode-label">Work</span>
+        <div id="focusPrompt" class="focus-prompt">
+            <div class="focus-prompt-content">
+                <h2>What are you focusing on?</h2>
+                <input type="text" id="focusInput" placeholder="Enter your focus...">
+                <button id="focusSubmit">Start Focusing</button>
+            </div>
+        </div>
         <h1>Pomodoro Timer</h1>
+        <div id="focusDisplay" class="focus-display hidden">
+            <span>FOCUSING ON: </span>
+            <span id="focusText"></span>
+        </div>
         <div class="timer">
             <span id="minutes">25</span>:<span id="seconds">00</span>
         </div>
